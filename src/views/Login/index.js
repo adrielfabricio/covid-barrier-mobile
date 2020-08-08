@@ -66,6 +66,8 @@ const Login = ({ navigation }) => {
         onPress={() => setSubmit(true)}
         containerStyle={{ width: '90%', marginBottom: '2%' }}
         buttonStyle={{ backgroundColor: '#b31b23ff' }}
+        loading={loading}
+        loadingProps={{ size: 10 }}
       />
       <Divider
         style={{
@@ -85,11 +87,13 @@ const Login = ({ navigation }) => {
         buttonStyle={{
           backgroundColor: 'transparent',
         }}
-        loading={loading}
-        loadingProps={{ size: 10 }}
+        onPress={() => navigation.navigate('SignUp')}
       />
       <Footer>
-        <TouchableHighlight>
+        <TouchableHighlight
+          onPress={() => {
+            navigation.navigate('Forgot');
+          }}>
           <Text>Esqueceu a senha? Clique aqui</Text>
         </TouchableHighlight>
       </Footer>
