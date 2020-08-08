@@ -1,14 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import { Container } from './styles';
 import SearchUser from './SearchUser';
 import ListUser from './ListUser';
 
-const Users = ({ navigation, route }) => {
+const Users = () => {
+  const [searchData, setSearchData] = useState(false);
   return (
     <Container>
-      <SearchUser />
-      <ListUser route />
+      <SearchUser setData={setSearchData} />
+      {searchData ? null : <ListUser />}
     </Container>
   );
 };

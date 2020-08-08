@@ -5,7 +5,7 @@ import { FlatList, View, TouchableHighlight } from 'react-native';
 import LoadingIcon from '../../components/LoadingIcon';
 import getUsers from '../../services/getUsers';
 import { useNavigation } from '@react-navigation/native';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 const ListUser = () => {
   const [users, setUsers] = useState([]);
@@ -47,9 +47,7 @@ const ListUser = () => {
 
   const refreshList = async () => {
     setRefreshing(true);
-    setLoading(false);
     await loadPage(1, true);
-    setLoading(false);
     setRefreshing(false);
   };
   return (
