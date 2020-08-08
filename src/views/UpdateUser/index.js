@@ -127,7 +127,6 @@ const UpdateUser = ({ navigation, route }) => {
                 cnh ? cnh : null,
                 date_birth ? date_birth : null,
               );
-              console.log('aaa');
               alert('Usuário atualizado');
             } else {
               throw {
@@ -160,7 +159,7 @@ const UpdateUser = ({ navigation, route }) => {
     else if (submit) invertActive();
   }, [activeChange, submit]);
 
-  return originalData ? (
+  return originalData?.email ? (
     <Container>
       <Header>
         <Text h4>Alterar Usuário</Text>
