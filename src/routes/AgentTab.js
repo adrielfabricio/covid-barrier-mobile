@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import ProfileStack from './ProfileStack';
 import Vehicle from '../views/Vehicle';
-import Users from '../views/Users';
+import UsersStack from './UsersStack';
 import Barrier from '../views/Barrier';
 
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -96,7 +96,7 @@ export default function App() {
       <Tab.Screen name="Veículo" component={Vehicle} />
       {isAdmin ? (
         <>
-          <Tab.Screen name="Usuários" component={Users} />
+          <Tab.Screen name="Usuários" component={UsersStack} />
           <Tab.Screen name="Barreira" component={Barrier} />
         </>
       ) : null}
