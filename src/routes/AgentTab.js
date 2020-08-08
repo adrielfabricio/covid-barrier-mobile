@@ -32,9 +32,9 @@ export default function App() {
           let checkIsAdmin = rolePermission.data.user.roles.find(
             (val) => val === 'admin_city',
           );
-          if (checkIsAdmin) {
-            setIsAdmin(true);
-          }
+          if (checkIsAdmin) setIsAdmin(true);
+          else setIsAdmin(false);
+
           addRolePermission(rolePermission.data.user);
         }
       } catch (error) {}
@@ -43,7 +43,7 @@ export default function App() {
       isAuthenticated();
     }
     return () => (mounted = false);
-  });
+  }, []);
 
   return (
     <Tab.Navigator
