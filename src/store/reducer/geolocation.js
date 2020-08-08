@@ -8,7 +8,7 @@ const INITIAL_STATE = {
 
 function geolocation(state = INITIAL_STATE, action) {
   switch (action.type) {
-    case 'ADD_GELOCATION':
+    case 'ADD_GEOLOCATION':
       return {
         ...state,
         geolocation: { ...state.geolocation, ...action.geolocation },
