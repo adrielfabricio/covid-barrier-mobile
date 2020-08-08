@@ -4,14 +4,17 @@ import DateTimePicker from '@react-native-community/datetimepicker';
 
 import { dateLess10 } from '../../helpers';
 import { Container, Header, FormView, Input } from './styles';
+import register from '../../services/register';
 
 const SignUp = () => {
+  const [submit, setSubmit] = useState(false);
   const [loading, setLoading] = useState(false);
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [password_confirmation, setPasswordConfirmation] = useState('');
   const [cpf, setCpf] = useState('');
-  const [dateBirth, setDateBirth] = useState('');
+  const [date_birth, setDateBirth] = useState('');
   const [originCity, setOriginCity] = useState('');
 
   const [date, setDate] = useState(new Date(1598051730000));
@@ -40,6 +43,36 @@ const SignUp = () => {
   const showDatepicker = () => {
     showMode('date');
   };
+
+  useEffect(() => {
+    const handleSubmit = async () => {
+      try {
+        setLoading(true);
+
+        let response = await register(
+          email,
+          password,
+          password_confirmation,
+          name,
+          cpf,
+          date_birth,
+        );
+        alert(response.message);
+
+        console.log(response);
+
+        setSubmit(false);
+        setLoading(false);
+      } catch (e) {
+        console.log(e);
+        alert('Ops! Verifique o formulário, algo não esta certo!');
+        setSubmit(false);
+        setLoading(false);
+      }
+    };
+
+    if (submit === true) handleSubmit();
+  }, [submit]);
 
   return (
     <Container>
@@ -70,6 +103,14 @@ const SignUp = () => {
           onChangeText={(value) => setPassword(value)}
         />
         <Input
+          placeholder="Confimar Senha"
+          autoCapitalize="none"
+          autoCorrect={false}
+          secureTextEntry
+          value={password_confirmation}
+          onChangeText={(value) => setPasswordConfirmation(value)}
+        />
+        <Input
           placeholder="CPF"
           autoCapitalize="none"
           autoCorrect={false}
@@ -79,7 +120,7 @@ const SignUp = () => {
         <Input
           placeholder={'Data de nascimento'}
           keyboard={true}
-          value={`${dateBirth}`}
+          value={`${date_birth}`}
           onFocus={showDatepicker}
           ref={refDatePicker}
         />
@@ -102,6 +143,7 @@ const SignUp = () => {
         />
         <Button
           title="SOLICITAR CADASTRO"
+          onPress={() => setSubmit(true)}
           containerStyle={{ width: '90%' }}
           buttonStyle={{ backgroundColor: '#b31b23ff' }}
           loading={loading}
