@@ -1,6 +1,9 @@
 import * as React from 'react';
 
 import Profile from '../views/Profile';
+import Vehicle from '../views/Vehicle';
+import Users from '../views/Users';
+import Barrier from '../views/Barrier';
 
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
@@ -15,11 +18,17 @@ export default function App() {
         tabBarIcon: ({ focused, color, size }) => {
           let iconName;
           switch (route.name) {
-            case 'Produtos':
-              iconName = 'ios-home';
+            case 'Veículo':
+              iconName = focused ? 'ios-car-sport' : 'ios-car-sport-outline';
+              break;
+            case 'Usuários':
+              iconName = focused ? 'ios-people' : 'ios-people-outline';
+              break;
+            case 'Barreira':
+              iconName = focused ? 'ios-shield' : 'ios-shield-outline';
               break;
             default:
-              iconName = 'ios-person';
+              iconName = focused ? 'ios-person' : 'ios-person-outline';
               break;
           }
           // You can return any component that you like here!
@@ -27,13 +36,13 @@ export default function App() {
         },
       })}
       tabBarOptions={{
-        activeTintColor: 'pink',
-        inactiveTintColor: 'red',
+        activeTintColor: '#ed1b23ff',
+        inactiveTintColor: '#ed1b2366',
       }}>
-      <Tab.Screen name="Profile" component={Profile} />
-      {/* <Tab.Screen name="Vehicle" component={Vehicle} /> */}
-      {/* <Tab.Screen name="Users" component={Users} /> */}
-      {/* <Tab.Screen name="Barrier" component={Barrier} /> */}
+      <Tab.Screen name="Veículo" component={Vehicle} />
+      <Tab.Screen name="Usuários" component={Users} />
+      <Tab.Screen name="Barreira" component={Barrier} />
+      <Tab.Screen name="Perfil" component={Profile} />
     </Tab.Navigator>
   );
 }
