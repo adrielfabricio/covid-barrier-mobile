@@ -1,10 +1,16 @@
 import React from 'react';
-import { View } from 'react-native';
 
-// import { Container } from './styles';
+import { Container } from './styles';
+import SearchUser from './SearchUser';
+import ListUser from './ListUser';
 
-const Users = () => {
-  return <View />;
+const Users = ({ navigation, route }) => {
+  return (
+    <Container>
+      <SearchUser />
+      <ListUser route />
+    </Container>
+  );
 };
 
 export default Users;
