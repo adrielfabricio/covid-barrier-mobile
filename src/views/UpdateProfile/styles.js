@@ -9,6 +9,7 @@ export const FormView = styled.View({
   width: '100%',
   alignItems: 'center',
   justifyContent: 'center',
+  paddingBottom: '5%',
 });
 
 export const Input = styled.TextInput({
