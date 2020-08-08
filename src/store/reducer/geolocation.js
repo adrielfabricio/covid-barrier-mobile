@@ -1,9 +1,7 @@
 const INITIAL_STATE = {
-  geolocation: {
-    latitude: null,
-    longitude: null,
-    radius: null,
-  },
+  latitude: null,
+  longitude: null,
+  radius: null,
 };
 
 function geolocation(state = INITIAL_STATE, action) {
@@ -11,7 +9,7 @@ function geolocation(state = INITIAL_STATE, action) {
     case 'ADD_GEOLOCATION':
       return {
         ...state,
-        geolocation: { ...state.geolocation, ...action.geolocation },
+        ...action.geolocation,
       };
     default:
       return state;
