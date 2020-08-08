@@ -12,6 +12,9 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 
 import getRolePermission from '../services/getRolePermission';
 
+import Geolocation from '@react-native-community/geolocation';
+import { Platform } from 'react-native';
+
 const Tab = createBottomTabNavigator();
 
 export default function App() {
@@ -22,6 +25,13 @@ export default function App() {
   function addRolePermission(rolePermission) {
     dispatch({ type: 'ADD_ROLE_PERMISSION', rolePermission });
   }
+
+  const setGeolocation = (latitude, longitude, radius = 10.0) => {
+    dispatch({
+      type: 'ADD_GEOLOCATION',
+      geolocation: { latitude, longitude, radius },
+    });
+  };
 
   useEffect(() => {
     let mounted = true;
@@ -43,6 +53,17 @@ export default function App() {
       isAuthenticated();
     }
     return () => (mounted = false);
+  }, []);
+
+  useEffect(() => {
+    Geolocation.getCurrentPosition(
+      function onSuccess(pos) {
+        setGeolocation(pos.coords.latitude, pos.coords.longitude);
+      },
+      function onError(err) {
+        console.log(err);
+      },
+    );
   }, []);
 
   return (
