@@ -4,6 +4,9 @@ import { applyMiddleware, createStore } from 'redux';
 // Logger para o redux
 import { createLogger } from 'redux-logger';
 
+// Config para persistencia de dados com o redux
+import { persistStore } from 'redux-persist';
+
 import reducer from './reducer';
 // Array que conterá todos os middlewares
 const middlewares = [];
@@ -19,6 +22,6 @@ middlewares.push(logger);
 const store = createStore(reducer, applyMiddleware(...middlewares));
 
 // Criar o persistor com a store
-// const persistor = persistStore(store);
+const persistor = persistStore(store);
 
-export { store };
+export { store, persistor };
