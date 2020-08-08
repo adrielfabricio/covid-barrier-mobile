@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Button } from 'react-native-elements';
+import { Text, TouchableHighlight, TouchableOpacity } from 'react-native';
+import { Button, Divider } from 'react-native-elements';
 
-import { Container, Logo, Input } from './styles';
+import { Container, Logo, Input, Footer } from './styles';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -25,7 +26,35 @@ const Login = () => {
         autoCorrect={false}
         secureTextEntry
       />
-      <Button title="ENTRAR" containerStyle={{ width: '90%' }} />
+      <Button
+        title="ENTRAR"
+        containerStyle={{ width: '90%', marginBottom: '2%' }}
+        buttonStyle={{ backgroundColor: '#b31b23ff' }}
+      />
+      <Divider
+        style={{
+          marginBottom: '2%',
+          backgroundColor: '#bebebe45',
+          width: '90%',
+          height: '.25%',
+        }}
+      />
+      <Button
+        title="Criar nova conta"
+        titleStyle={{ color: '#000000' }}
+        containerStyle={{
+          width: '90%',
+          marginBottom: '2%',
+        }}
+        buttonStyle={{
+          backgroundColor: 'transparent',
+        }}
+      />
+      <Footer>
+        <TouchableHighlight>
+          <Text>Esqueceu a senha? Clique aqui</Text>
+        </TouchableHighlight>
+      </Footer>
     </Container>
   );
 };

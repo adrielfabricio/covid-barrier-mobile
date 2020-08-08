@@ -9,7 +9,7 @@ export const Container = styled.View({
 
 export const Logo = styled.Image({
   height: '30%',
-  marginBottom: '40px',
+  marginBottom: '7%',
 });
 
 export const Input = styled.TextInput({
@@ -21,4 +21,15 @@ export const Input = styled.TextInput({
   marginBottom: '15px',
   marginHorizontal: '20px',
   fontSize: '16px',
+});
+
+export const Footer = styled.View({
+  width: '100%',
+  height: '7%',
+  paddingLeft: '5%',
+  backgroundColor: 'transparent',
+  justifyContent: 'center',
+  alignItems: 'flex-start',
+  position: 'absolute',
+  bottom: 0,
 });
