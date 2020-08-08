@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import Profile from '../views/Profile';
+import ProfileStack from './ProfileStack';
 import Vehicle from '../views/Vehicle';
 import Users from '../views/Users';
 import Barrier from '../views/Barrier';
@@ -79,7 +79,7 @@ export default function App() {
           <Tab.Screen name="Barreira" component={Barrier} />
         </>
       ) : null}
-      <Tab.Screen name="Perfil" component={Profile} />
+      <Tab.Screen name="Perfil" component={ProfileStack} />
     </Tab.Navigator>
   );
 }
