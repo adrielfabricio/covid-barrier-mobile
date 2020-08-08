@@ -18,6 +18,8 @@ function user(state = INITIAL_STATE, action) {
   switch (action.type) {
     case 'ADD_USER':
       return { ...state, user: { ...state.user, ...action.user } };
+    case 'ADD_ROLE_PERMISSION':
+      return { ...state, ...action.rolePermission };
     case 'ADD_AUTH':
       return { ...state, auth: { ...state.auth, ...action.auth } };
     case 'LOGOUT':
