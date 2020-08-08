@@ -67,6 +67,7 @@ const Login = ({ navigation }) => {
         containerStyle={{ width: '90%', marginBottom: '2%' }}
         buttonStyle={{ backgroundColor: '#b31b23ff' }}
         loading={loading}
+        loadingProps={{ size: 10 }}
       />
       <Divider
         style={{
