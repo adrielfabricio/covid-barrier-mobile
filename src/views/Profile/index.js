@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Text, Avatar, ListItem, Icon } from 'react-native-elements';
 
-import { View } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { Container } from './styles';
@@ -10,7 +9,7 @@ import me from '../../services/me';
 import { convertDate } from '../../helpers';
 const colorIcons = '#ed1b23ff';
 
-const Profile = () => {
+const Profile = ({ navigation }) => {
   const user = useSelector((state) => state.user.user);
   const dispatch = useDispatch();
   function addUser(user) {
@@ -58,6 +57,7 @@ const Profile = () => {
         containerStyle={{ marginVertical: 40 }}
         title={'Alterar informações'}
         chevron={{ color: 'gray', size: 20 }}
+        onPress={() => navigation.navigate('UpdateProfile')}
       />
       <ListItem
         leftAvatar={
