@@ -1,4 +1,5 @@
-import * as React from 'react';
+import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 
 import Profile from '../views/Profile';
 import Vehicle from '../views/Vehicle';
@@ -9,9 +10,41 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
+import getRolePermission from '../services/getRolePermission';
+
 const Tab = createBottomTabNavigator();
 
 export default function App() {
+  const [isAdmin, setIsAdmin] = useState(false);
+  const token = useSelector((state) => state.user.auth.token);
+  const dispatch = useDispatch();
+
+  function addRolePermission(rolePermission) {
+    dispatch({ type: 'ADD_ROLE_PERMISSION', rolePermission });
+  }
+
+  useEffect(() => {
+    let mounted = true;
+    const isAuthenticated = async () => {
+      try {
+        if (mounted) {
+          let rolePermission = await getRolePermission();
+          let checkIsAdmin = rolePermission.data.user.roles.find(
+            (val) => val === 'admin_city',
+          );
+          if (checkIsAdmin) {
+            setIsAdmin(true);
+          }
+          addRolePermission(rolePermission.data.user);
+        }
+      } catch (error) {}
+    };
+    if (token) {
+      isAuthenticated();
+    }
+    return () => (mounted = false);
+  });
+
   return (
     <Tab.Navigator
       screenOptions={({ route }) => ({
@@ -40,8 +73,12 @@ export default function App() {
         inactiveTintColor: '#ed1b2366',
       }}>
       <Tab.Screen name="Veículo" component={Vehicle} />
-      <Tab.Screen name="Usuários" component={Users} />
-      <Tab.Screen name="Barreira" component={Barrier} />
+      {isAdmin ? (
+        <>
+          <Tab.Screen name="Usuários" component={Users} />
+          <Tab.Screen name="Barreira" component={Barrier} />
+        </>
+      ) : null}
       <Tab.Screen name="Perfil" component={Profile} />
     </Tab.Navigator>
   );
