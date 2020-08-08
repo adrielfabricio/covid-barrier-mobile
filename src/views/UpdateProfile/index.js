@@ -106,8 +106,15 @@ const UpdateProfile = ({ navigation }) => {
 
   return (
     <Container>
-      <ButtonBack navigation={navigation} bottom />
-      <Text h4 style={{ color: '#404040', marginBottom: 10, marginLeft: 20 }}>
+      <ButtonBack navigation={navigation} position />
+      <Text
+        h4
+        style={{
+          color: '#404040',
+          marginBottom: 10,
+          marginLeft: 20,
+          marginTop: 25,
+        }}>
         Atualizar dados
       </Text>
       <FormView>
