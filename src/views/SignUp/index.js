@@ -5,6 +5,7 @@ import DateTimePicker from '@react-native-community/datetimepicker';
 import { dateLess10 } from '../../helpers';
 import { Container, Header, FormView, Input } from './styles';
 import register from '../../services/register';
+import ButtonBack from '../../components/ButtonBack';
 
 const SignUp = () => {
   const [submit, setSubmit] = useState(false);
@@ -150,6 +151,7 @@ const SignUp = () => {
           loadingProps={{ size: 10 }}
         />
       </FormView>
+      <ButtonBack bottom />
     </Container>
   );
 };

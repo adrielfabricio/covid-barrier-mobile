@@ -3,7 +3,7 @@ import styled from 'styled-components/native';
 export const Container = styled.SafeAreaView({
   flex: 1,
   alignItems: 'center',
-  justifyContent: 'center',
+  marginTop: 30,
   backgroundColor: '#F5F5F5',
 });
 
@@ -24,7 +24,7 @@ export const FormView = styled.View({
 
 export const Input = styled.TextInput({
   paddingHorizontal: '20px',
-  paddingVertical: '15px',
+  paddingVertical: '10px',
   borderRadius: '5px',
   backgroundColor: '#FFFFFF',
   alignSelf: 'stretch',
