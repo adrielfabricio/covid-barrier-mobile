@@ -13,7 +13,6 @@ export const Header = styled.View({
   backgroundColor: 'transparent',
   justifyContent: 'center',
   alignItems: 'center',
-  position: 'absolute',
   top: 0,
 });
 
