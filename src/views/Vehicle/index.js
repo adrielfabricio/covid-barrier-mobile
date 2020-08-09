@@ -84,7 +84,7 @@ const Vehicle = () => {
           style={{ height: 60, width: '90%' }}
           onValueChange={(itemValue) => setCityOrigin(itemValue)}>
           {cities.map((city) => (
-            <Picker.Item label={city.nome} value={city.nome} />
+            <Picker.Item key={city.id} label={city.nome} value={city.nome} />
           ))}
         </Picker>
 
