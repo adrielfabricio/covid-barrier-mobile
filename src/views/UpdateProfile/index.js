@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Text, Button } from 'react-native-elements';
+import DateTimePicker from '@react-native-community/datetimepicker';
 
 import { useSelector } from 'react-redux';
 
