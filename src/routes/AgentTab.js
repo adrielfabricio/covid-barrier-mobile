@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import ProfileStack from './ProfileStack';
-import Vehicle from '../views/Vehicle';
 import UsersStack from './UsersStack';
 import BarrierStack from './BarrierStack';
+import VehicleStack from './VehicleStack';
 
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
@@ -93,7 +93,7 @@ export default function App() {
         activeTintColor: '#ed1b23ff',
         inactiveTintColor: '#ed1b2366',
       }}>
-      <Tab.Screen name="Veículo" component={Vehicle} />
+      <Tab.Screen name="Veículo" component={VehicleStack} />
       {isAdmin ? (
         <>
           <Tab.Screen name="Usuários" component={UsersStack} />
